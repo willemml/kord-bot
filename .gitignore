@@ -5,6 +5,7 @@ autoDelList
 banList
 cg-highscore
 lists
+.DS_Store
 *.iml
 messages.log
 out
