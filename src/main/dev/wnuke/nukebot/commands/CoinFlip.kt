@@ -5,15 +5,14 @@ import com.gitlab.kordlib.kordx.commands.annotation.AutoWired
 import com.gitlab.kordlib.kordx.commands.annotation.ModuleName
 import com.gitlab.kordlib.kordx.commands.kord.module.command
 import com.gitlab.kordlib.kordx.commands.model.command.invoke
-import kotlin.random.Random
+import java.util.concurrent.ThreadLocalRandom
 
 @ModuleName("coinflip-command")
 fun coinFlipCommand() = command("flip") {
     invoke() {
-        respond(when (Random.nextInt(0, 2)) {
-            0 -> "heads"
-            1 -> "tails"
-            else -> "I lost the coin!"
+        respond(when (ThreadLocalRandom.current().nextBoolean()) {
+            true -> "heads"
+            false -> "tails"
         })
     }
 }
