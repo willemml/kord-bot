@@ -35,9 +35,9 @@ tasks.withType<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar> {
 dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core")
     implementation("com.gitlab.kordlib.kord:kord-core:0.5.3")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.0.1-2")
-    implementation("com.gitlab.kordlib.kordx:kordx-commands-runtime-kord:0.1.1")
-    kapt("com.gitlab.kordlib.kordx:kordx-commands-processor:0.1.1")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.3.72")
+    implementation("com.gitlab.kordlib.kordx:kordx-commands-runtime-kord:0.2.0")
+    kapt("com.gitlab.kordlib.kordx:kordx-commands-processor:0.2.0")
 
 }
 
