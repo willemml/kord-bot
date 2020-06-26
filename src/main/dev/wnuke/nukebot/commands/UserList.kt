@@ -10,6 +10,9 @@ import com.gitlab.kordlib.kordx.commands.model.command.invoke
 @ModuleName("userlist-command")
 fun userListCommand() = command("userlist") {
     invoke {
-        respond(message.getGuild().memberCount?.let { kord.rest.guild.getGuildMembers(message.getGuild().id.value, null, it) }!!.toList().joinToString(separator = "\n") { "${it.user!!.username}#${it.user!!.discriminator}" })
+
+        val members = message.getGuild().memberCount?.let { kord.rest.guild.getGuildMembers(message.getGuild().id.value, null, it) }!!.toList()
+        val memberList = members.joinToString(separator = "\n") { "${it.user!!.username}#${it.user!!.discriminator}" }
+        respond(memberList)
     }
 }
