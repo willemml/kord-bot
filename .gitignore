@@ -4,6 +4,7 @@ build
 autoDelList
 banList
 cg-highscore
+lists
 *.iml
 messages.log
 out
