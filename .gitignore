@@ -1,0 +1,8 @@
+build
+.gradle
+.idea
+*.iml
+messages.log
+out
+.run
+nuke-bot.iml
