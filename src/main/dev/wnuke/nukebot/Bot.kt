@@ -3,6 +3,7 @@
 package dev.wnuke.nukebot
 
 import com.gitlab.kordlib.core.event.message.MessageCreateEvent
+import com.gitlab.kordlib.core.on
 import com.gitlab.kordlib.kordx.commands.annotation.AutoWired
 import com.gitlab.kordlib.kordx.commands.kord.bot
 import com.gitlab.kordlib.kordx.commands.kord.model.prefix.kord
@@ -10,7 +11,6 @@ import com.gitlab.kordlib.kordx.commands.kord.model.prefix.mention
 import com.gitlab.kordlib.kordx.commands.model.prefix.literal
 import com.gitlab.kordlib.kordx.commands.model.prefix.or
 import com.gitlab.kordlib.kordx.commands.model.prefix.prefix
-import com.gitlab.kordlib.core.on
 import kapt.kotlin.generated.configure
 import java.io.File
 import java.time.Instant
@@ -21,7 +21,11 @@ val prefixes = prefix {
     kord { literal("n!") or mention() }
 }
 
+
 suspend fun main() = bot(System.getenv("BOT_TOKEN")) {
+    File("cg-highscore").createNewFile()
+    File("banList").createNewFile()
+    File("autoDelList").createNewFile()
     this.configure()
     this.kord.on<MessageCreateEvent> {
         val timeStamp = DateTimeFormatter

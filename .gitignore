@@ -1,6 +1,9 @@
 build
 .gradle
 .idea
+autoDelList
+banList
+cg-highscore
 *.iml
 messages.log
 out
