@@ -5,6 +5,7 @@ plugins {
     id("application")
     id("com.github.johnrengelman.shadow") version "5.2.0"
     id("org.jetbrains.kotlin.kapt") version "1.3.72"
+    kotlin("plugin.serialization") version "1.3.72"
 }
 
 repositories {

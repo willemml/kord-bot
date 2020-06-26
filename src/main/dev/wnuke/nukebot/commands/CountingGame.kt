@@ -24,6 +24,7 @@ val countGames: HashMap<Snowflake, Job> = HashMap()
 @ModuleName("countgame-command")
 fun countGameCommand() = command("cg") {
     invoke {
+        File("cg-highscore").createNewFile()
         newCountGame(channel.id, kord)
         val highScore: Int = if (File("cg-highscore").readText().toIntOrNull() != null) File("cg-highscore").readText().toInt() else 0
         respond("Counting game has started in this channel, try to beat the current highscore of $highScore")
@@ -48,7 +49,7 @@ fun newCountGame(channel: Snowflake, kord: Kord) {
         var currentCount: Int = 0
         var lastUserToCount: Snowflake? = null
         kord.on<MessageCreateEvent> {
-            if (message.content.toIntOrNull() == null || message.channel.id != channel) return@on
+            if (message.content.toIntOrNull() == null || message.channel.id != channel || countGames[channel] == null) return@on
             if (message.author!!.id != lastUserToCount) {
                 if (currentCount + 1 == message.content.toInt()) {
                     currentCount++
