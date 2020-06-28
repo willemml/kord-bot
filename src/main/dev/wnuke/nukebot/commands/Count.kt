@@ -15,10 +15,13 @@ var countThreads: HashSet<Job> = HashSet()
 fun countStartCommand() = command("count") {
     invoke(IntArgument("start"), IntArgument("end")) { a, b ->
         countThreads.add(GlobalScope.launch {
-            for (i in a..b) {
+            var range = (a..b).toHashSet()
+            if (a > b) range = b.downTo(a).toHashSet()
+            for (i in range) {
                 channel.createMessage(i.toString())
-                delay(1000)
+                delay(500)
             }
+            if (countThreads.isNotEmpty()) countThreads.last().join()
         })
     }
 }
