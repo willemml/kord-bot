@@ -45,6 +45,7 @@ pipeline {
         withCredentials([string(credentialsId: 'discord-webhook', variable: 'discordWebhook')]) {
             discordSend thumbnail: "http://wnuke.dev/radiation-symbol.png", successful: currentBuild.resultIsBetterOrEqualTo('SUCCESS'), description: "${msg}", link: env.BUILD_URL, title: "nuke-bot:${branch} #${BUILD_NUMBER}", webhookURL: "${discordWebhook}"
         }
+    }
   }
 }
 
