@@ -19,8 +19,6 @@ pipeline {
   post {
     always {
       archiveArtifacts artifacts: "build/libs/nuke-bot-${env.BUILD_NUMBER}.jar", fingerprint: true, followSymlinks: false, onlyIfSuccessful: true
-    }
-    always {
       script {
         def artifactUrl = env.BUILD_URL + "artifact/"
         def msg = "**Status:** " + currentBuild.currentResult.toLowerCase() + "\n"
