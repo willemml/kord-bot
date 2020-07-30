@@ -18,7 +18,6 @@ pipeline {
       script {
         def artifactUrl = env.BUILD_URL + "artifact/"
         def msg = "**Status:** " + currentBuild.currentResult.toLowerCase() + "\n"
-        msg += "**Branch:** ${env.BRANCH_NAME}\n"
         msg += "**Changes:** \n"
         if (!currentBuild.changeSets.isEmpty()) {
             currentBuild.changeSets.first().getLogs().each {
@@ -38,7 +37,7 @@ pipeline {
         }
 
         withCredentials([string(credentialsId: 'discord-webhook', variable: 'discordWebhook')]) {
-            discordSend thumbnail: "http://wnuke.dev/radiation-symbol.png", successful: currentBuild.resultIsBetterOrEqualTo('SUCCESS'), description: "${msg}", link: env.BUILD_URL, title: "nuke-bot:${env.BRANCH_NAME} #${BUILD_NUMBER}", webhookURL: "${discordWebhook}"
+            discordSend thumbnail: "http://wnuke.dev/radiation-symbol.png", successful: currentBuild.resultIsBetterOrEqualTo('SUCCESS'), description: "${msg}", link: env.BUILD_URL, title: "nuke-bot #${BUILD_NUMBER}", webhookURL: "${discordWebhook}"
         }
       }
     }
