@@ -15,6 +15,11 @@ pipeline {
         sh "mv build/libs/nuke-bot-pipeline-all.jar build/libs/nuke-bot-${env.BUILD_NUMBER}.jar"
       }
     }
+  }
+  post {
+    always {
+      archiveArtifacts artifacts: "build/libs/nuke-bot-${env.BUILD_NUMBER}.jar", fingerprint: true, followSymlinks: false, onlyIfSuccessful: true
+    }
     stage('Discord notify'){
         def artifactUrl = env.BUILD_URL + "artifact/"
         def msg = "**Status:** " + currentBuild.currentResult.toLowerCase() + "\n"
@@ -38,13 +43,8 @@ pipeline {
         }
 
         withCredentials([string(credentialsId: 'discord-webhook', variable: 'discordWebhook')]) {
-            discordSend thumbnail: "http://wnuke.dev/radiation-symbol.png", successful: currentBuild.resultIsBetterOrEqualTo('SUCCESS'), description: "${msg}", link: env.BUILD_URL, title: "Warp_Engine:${branch} #${BUILD_NUMBER}", webhookURL: "${discordWebhook}"
+            discordSend thumbnail: "http://wnuke.dev/radiation-symbol.png", successful: currentBuild.resultIsBetterOrEqualTo('SUCCESS'), description: "${msg}", link: env.BUILD_URL, title: "nuke-bot:${branch} #${BUILD_NUMBER}", webhookURL: "${discordWebhook}"
         }
-    }
-  }
-  post {
-    always {
-      archiveArtifacts artifacts: "build/libs/nuke-bot-${env.BUILD_NUMBER}.jar", fingerprint: true, followSymlinks: false, onlyIfSuccessful: true
-    }
   }
 }
+
