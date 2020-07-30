@@ -17,7 +17,7 @@ pipeline {
     }
     stage('Discord') {
       steps {
-        withCredentials([string(credentialsId: 'nuke-git-webhook', variable: 'WEBHOOK')]) {
+        withCredentials([string(credentialsId: 'discord-webhook', variable: 'WEBHOOK')]) {
             discordSend description: "Jenkins Pipeline Build", link: env.BUILD_URL, result: currentBuild.currentResult, title: JOB_NAME, webhookURL: WEBHOOK
         }
       }
