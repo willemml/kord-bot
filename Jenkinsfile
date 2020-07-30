@@ -12,7 +12,7 @@ pipeline {
     }
     stage('Rename Jar') {
       steps {
-        sh 'mv build/libs/nuke-bot-all.jar build/libs/nuke-bot-${env.BUILD_NUMBER}.jar'
+        sh "mv build/libs/nuke-bot-all.jar build/libs/nuke-bot-${env.BUILD_NUMBER}.jar"
       }
     }
     stage('Discord') {
@@ -25,7 +25,7 @@ pipeline {
   }
   post {
     always {
-      archiveArtifacts artifacts: 'build/libs/nuke-bot-${env.BUILD_NUMBER}.jar', fingerprint: true, followSymlinks: false, onlyIfSuccessful: true
+      archiveArtifacts artifacts: "build/libs/nuke-bot-${env.BUILD_NUMBER}.jar", fingerprint: true, followSymlinks: false, onlyIfSuccessful: true
     }
   }
 }
