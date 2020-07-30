@@ -12,7 +12,7 @@ pipeline {
     }
     stage('Rename Jar') {
       steps {
-        sh "mv build/libs/nuke-bot-all.jar build/libs/nuke-bot-${env.BUILD_NUMBER}.jar"
+        sh "mv build/libs/nuke-bot-pipeline-all.jar build/libs/nuke-bot-${env.BUILD_NUMBER}.jar"
       }
     }
     stage('Discord') {
