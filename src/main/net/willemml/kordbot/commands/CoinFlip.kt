@@ -1,5 +1,5 @@
 @file:AutoWired
-package dev.wnuke.nukebot.commands
+package net.willemml.kordbot.commands
 
 import com.gitlab.kordlib.kordx.commands.annotation.AutoWired
 import com.gitlab.kordlib.kordx.commands.annotation.ModuleName

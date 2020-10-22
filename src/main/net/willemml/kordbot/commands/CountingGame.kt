@@ -1,6 +1,6 @@
 @file:AutoWired
 
-package dev.wnuke.nukebot.commands
+package net.willemml.kordbot.commands
 
 import com.gitlab.kordlib.common.entity.Snowflake
 import com.gitlab.kordlib.core.Kord

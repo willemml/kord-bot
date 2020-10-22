@@ -1,12 +1,12 @@
 @file:AutoWired
-package dev.wnuke.nukebot.commands
+package net.willemml.kordbot.commands
 
 import com.gitlab.kordlib.kordx.commands.annotation.AutoWired
 import com.gitlab.kordlib.kordx.commands.annotation.ModuleName
 import com.gitlab.kordlib.kordx.commands.kord.argument.UserArgument
 import com.gitlab.kordlib.kordx.commands.kord.module.command
 import com.gitlab.kordlib.kordx.commands.model.command.invoke
-import dev.wnuke.nukebot.lists
+import net.willemml.kordbot.lists
 
 @ModuleName("autodeladd-command")
 fun autoDeleteAddCommand() = command("adeladd") {

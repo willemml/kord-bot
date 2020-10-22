@@ -14,7 +14,7 @@ repositories {
 }
 
 application {
-    mainClassName = "dev.wnuke.nukebot.BotKt"
+    mainClassName = "net.willemml.kordbot.BotKt"
 }
 
 java {
@@ -29,7 +29,7 @@ tasks.withType<KotlinCompile> {
 
 tasks.withType<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar> {
     manifest {
-        attributes(Pair("Main-Class", "dev.wnuke.nukebot.BotKt"))
+        attributes(Pair("Main-Class", "net.willemml.kordbot.BotKt"))
     }
 }
 
